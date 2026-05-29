@@ -13,42 +13,42 @@
 				<key>testAuthorizationStatusIsRefreshedOnInit</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.0079270601272583008</real>
+					<real>0.10321998596191406</real>
 				</dict>
 				<key>testFetchCalendarsRequiresAuthorization</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.0094089508056640625</real>
+					<real>0.20526301860809326</real>
 				</dict>
 				<key>testFetchRemindersIncludesCompletedItems</key>
 				<dict>
 					<key>mrnet</key>
-					<real>2.0302540063858032</real>
+					<real>1.3151869773864746</real>
 				</dict>
 				<key>testFetchTodoItemsMapsListMetadata</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.34241199493408203</real>
+					<real>0.33183109760284424</real>
 				</dict>
 				<key>testReminderCRUDAndToggleCompletion</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.53261899948120117</real>
+					<real>0.68044102191925049</real>
 				</dict>
 				<key>testStartMonitoringChangesReceivesStoreUpdates</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.30214595794677734</real>
+					<real>0.14315509796142578</real>
 				</dict>
 				<key>testTodoItemConversion</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.18850696086883545</real>
+					<real>0.15413892269134521</real>
 				</dict>
 				<key>testUnauthorizedOperationsThrow</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.31244194507598877</real>
+					<real>0.31248891353607178</real>
 				</dict>
 			</dict>
 			<key>TodoItemTests</key>
@@ -56,12 +56,12 @@
 				<key>testTodoItemEquality</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.0016310214996337891</real>
+					<real>0.00040900707244873047</real>
 				</dict>
 				<key>testTodoSourceRawValues</key>
 				<dict>
 					<key>mrnet</key>
-					<real>0.0017189979553222656</real>
+					<real>0.00034701824188232422</real>
 				</dict>
 			</dict>
 		</dict>
