@@ -379,8 +379,9 @@ SWIFT_CLASS("_TtC7InkSync11AppDelegate")
 
 SWIFT_CLASS("_TtC7InkSync19StatusBarController")
 @interface StatusBarController : NSObject <NSPopoverDelegate>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)popoverDidClose:(NSNotification * _Nonnull)notification;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 #endif // defined(__OBJC__)

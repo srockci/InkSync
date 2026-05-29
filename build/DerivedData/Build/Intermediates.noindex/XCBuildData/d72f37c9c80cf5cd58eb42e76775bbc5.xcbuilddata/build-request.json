@@ -1,0 +1,66 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "fa25b90a569d9ee04e7cd3ccdc8ce166751c0c8dbbdd526d9580efaa09f91758"
+    },
+    {
+      "guid" : "fa25b90a569d9ee04e7cd3ccdc8ce16683ffaf6d5e2a3b63c81279d829be1ee5"
+    }
+  ],
+  "containerPath" : "/Users/srockci/Projects/InkSync/InkSync.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "hostTargetedPlatform" : null,
+      "platform" : "macosx",
+      "sdk" : "macosx26.5",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/srockci/Projects/InkSync/build/DerivedData/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/srockci/Projects/InkSync/build/DerivedData/Build/Products",
+      "derivedDataPath" : "/Users/srockci/Projects/InkSync/build/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/srockci/Projects/InkSync/build/DerivedData/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/srockci/Projects/InkSync/build/DerivedData/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/srockci/Projects/InkSync/build/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "test",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

@@ -6,6 +6,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     private var statusItem: NSStatusItem?
     private var popover: NSPopover?
     private let appState = AppState()
+    private let eventKitManager: EventKitManager
 
     var currentStatus: SyncStatus = .idle {
         didSet {
@@ -14,11 +15,13 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         }
     }
 
-    override init() {
+    init(eventKitManager: EventKitManager) {
+        self.eventKitManager = eventKitManager
         super.init()
         setupStatusItem()
         setupPopover()
         updateIcon()
+        setupRemindersMonitoring()
     }
 
     private func setupStatusItem() {
@@ -40,6 +43,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
 
         let rootView = MenuPopoverView(
             appState: appState,
+            eventKitManager: eventKitManager,
             onSyncNow: { [weak self] in
                 self?.handleSyncNow()
             },
@@ -56,6 +60,12 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
 
         popover.contentViewController = NSHostingController(rootView: rootView)
         self.popover = popover
+    }
+
+    private func setupRemindersMonitoring() {
+        eventKitManager.startMonitoringChanges {
+            print("Reminders 数据已变更")
+        }
     }
 
     @objc private func togglePopover(_ sender: AnyObject?) {

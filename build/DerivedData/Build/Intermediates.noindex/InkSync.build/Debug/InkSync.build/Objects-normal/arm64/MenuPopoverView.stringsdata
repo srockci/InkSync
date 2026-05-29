@@ -7,7 +7,7 @@
         "key": "InkSync",
         "location": {
           "startingColumn": 18,
-          "startingLine": 30
+          "startingLine": 37
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "状态: %@",
         "location": {
           "startingColumn": 18,
-          "startingLine": 40
+          "startingLine": 47
         }
       },
       {
@@ -23,7 +23,31 @@
         "key": "下次同步: %@",
         "location": {
           "startingColumn": 22,
-          "startingLine": 44
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "InkSync 需要访问「提醒事项」才能同步待办。请在系统设置中开启权限。",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "打开系统设置",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "无法访问提醒事项",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 66
         }
       },
       {
@@ -31,7 +55,7 @@
         "key": "📟 设备 (%lld台在线)",
         "location": {
           "startingColumn": 18,
-          "startingLine": 56
+          "startingLine": 92
         }
       },
       {
@@ -39,7 +63,7 @@
         "key": "立即同步",
         "location": {
           "startingColumn": 22,
-          "startingLine": 71
+          "startingLine": 107
         }
       },
       {
@@ -47,7 +71,7 @@
         "key": "查看今日变更",
         "location": {
           "startingColumn": 22,
-          "startingLine": 82
+          "startingLine": 118
         }
       },
       {
@@ -55,7 +79,7 @@
         "key": "打开设置...",
         "location": {
           "startingColumn": 20,
-          "startingLine": 98
+          "startingLine": 134
         }
       },
       {
@@ -63,7 +87,7 @@
         "key": "退出 InkSync",
         "location": {
           "startingColumn": 20,
-          "startingLine": 104
+          "startingLine": 140
         }
       },
       {
@@ -71,7 +95,7 @@
         "key": "├──",
         "location": {
           "startingColumn": 22,
-          "startingLine": 134
+          "startingLine": 170
         }
       },
       {
@@ -79,7 +103,7 @@
         "key": "✅",
         "location": {
           "startingColumn": 26,
-          "startingLine": 142
+          "startingLine": 178
         }
       },
       {
@@ -87,7 +111,7 @@
         "key": "│   └─ 同步列表: ",
         "location": {
           "startingColumn": 22,
-          "startingLine": 156
+          "startingLine": 192
         }
       }
     ]

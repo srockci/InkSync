@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MenuPopoverView: View {
     @ObservedObject var appState: AppState
+    @ObservedObject var eventKitManager: EventKitManager
     var onSyncNow: () -> Void
     var onViewChanges: () -> Void
     var onOpenSettings: () -> Void
@@ -11,6 +12,12 @@ struct MenuPopoverView: View {
         VStack(alignment: .leading, spacing: 0) {
             header
             Divider()
+
+            if eventKitManager.isAccessDenied {
+                permissionDeniedBanner
+                Divider()
+            }
+
             statusSection
             Divider()
             deviceSection
@@ -47,6 +54,35 @@ struct MenuPopoverView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+
+    private var permissionDeniedBanner: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 6) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(.yellow)
+                Text("无法访问提醒事项")
+                    .font(.subheadline.weight(.medium))
+            }
+
+            Text("InkSync 需要访问「提醒事项」才能同步待办。请在系统设置中开启权限。")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Button("打开系统设置") {
+                SystemSettings.openRemindersPrivacy()
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(Color.accentColor)
+            .font(.caption)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(Color.yellow.opacity(0.12))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
     }
@@ -175,6 +211,7 @@ private struct DeviceRow: View {
 #Preview {
     MenuPopoverView(
         appState: AppState(),
+        eventKitManager: EventKitManager(),
         onSyncNow: {},
         onViewChanges: {},
         onOpenSettings: {},

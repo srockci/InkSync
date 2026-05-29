@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+Target 'InkSyncTests' in project 'InkSync'
+➜ Explicit dependency on target 'InkSync' in project 'InkSync'
+Target 'InkSync' in project 'InkSync' (no dependencies)

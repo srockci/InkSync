@@ -26,5 +26,7 @@
 	<string>Copyright © 2026 InkSync. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>InkSync 需要访问「提醒事项」以读取和同步您的待办列表到墨水屏设备。</string>
 </dict>
 </plist>

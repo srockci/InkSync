@@ -6,7 +6,7 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
-		<key>1E254C15-55CC-41B3-9548-6342400579AE</key>
+		<key>CF160B18-1CFC-4520-A187-E14FC5FAA2DB</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>1E254C15-55CC-41B3-9548-6342400579AE.xcactivitylog</string>
+			<string>CF160B18-1CFC-4520-A187-E14FC5FAA2DB.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -29,7 +29,7 @@
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
+				<integer>3</integer>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>InkSync project</string>
@@ -38,15 +38,15 @@
 			<key>schemeIdentifier-sharedScheme</key>
 			<integer>1</integer>
 			<key>signature</key>
-			<string>Building project InkSync with scheme InkSync and configuration Debug</string>
+			<string>Testing project InkSync with scheme InkSync</string>
 			<key>timeStartedRecording</key>
-			<real>801738367.76565599</real>
+			<real>801741762.54358101</real>
 			<key>timeStoppedRecording</key>
-			<real>801738380.17233098</real>
+			<real>801741766.54768002</real>
 			<key>title</key>
-			<string>Building project InkSync with scheme InkSync and configuration Debug</string>
+			<string>Testing project InkSync with scheme InkSync</string>
 			<key>uniqueIdentifier</key>
-			<string>1E254C15-55CC-41B3-9548-6342400579AE</string>
+			<string>CF160B18-1CFC-4520-A187-E14FC5FAA2DB</string>
 		</dict>
 	</dict>
 </dict>
