@@ -3,6 +3,7 @@ import SwiftUI
 struct MenuPopoverView: View {
     @ObservedObject var appState: AppState
     @ObservedObject var eventKitManager: EventKitManager
+    @ObservedObject var mappingManager: MappingManager
     var onSyncNow: () -> Void
     var onViewChanges: () -> Void
     var onOpenSettings: () -> Void
@@ -28,6 +29,9 @@ struct MenuPopoverView: View {
         }
         .frame(width: 320)
         .background(Color(nsColor: .windowBackgroundColor))
+        .sheet(isPresented: $mappingManager.showSettings) {
+            MappingConfigView(mappingManager: mappingManager)
+        }
     }
 
     private var header: some View {
@@ -212,6 +216,7 @@ private struct DeviceRow: View {
     MenuPopoverView(
         appState: AppState(),
         eventKitManager: EventKitManager(),
+        mappingManager: MappingManager(eventKitManager: EventKitManager(), apiClient: MockAPIClient()),
         onSyncNow: {},
         onViewChanges: {},
         onOpenSettings: {},

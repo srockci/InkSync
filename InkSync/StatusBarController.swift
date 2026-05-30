@@ -7,6 +7,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     private var popover: NSPopover?
     private let appState = AppState()
     private let eventKitManager: EventKitManager
+    private let mappingManager: MappingManager
 
     var currentStatus: SyncStatus = .idle {
         didSet {
@@ -15,8 +16,9 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         }
     }
 
-    init(eventKitManager: EventKitManager) {
+    init(eventKitManager: EventKitManager, mappingManager: MappingManager) {
         self.eventKitManager = eventKitManager
+        self.mappingManager = mappingManager
         super.init()
         setupStatusItem()
         setupPopover()
@@ -44,14 +46,15 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         let rootView = MenuPopoverView(
             appState: appState,
             eventKitManager: eventKitManager,
+            mappingManager: mappingManager,
             onSyncNow: { [weak self] in
                 self?.handleSyncNow()
             },
             onViewChanges: {
                 print("打开同步记录窗口")
             },
-            onOpenSettings: {
-                print("打开设置窗口")
+            onOpenSettings: { [weak self] in
+                self?.mappingManager.showSettings.toggle()
             },
             onQuit: {
                 NSApplication.shared.terminate(nil)
