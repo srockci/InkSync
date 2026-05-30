@@ -4,8 +4,9 @@ struct MenuPopoverView: View {
     @ObservedObject var appState: AppState
     @ObservedObject var eventKitManager: EventKitManager
     @ObservedObject var mappingManager: MappingManager
+    @ObservedObject var syncEngine: SyncEngine
     var onSyncNow: () -> Void
-    var onViewChanges: () -> Void
+    var onViewSyncLog: () -> Void
     var onOpenSettings: () -> Void
     var onQuit: () -> Void
 
@@ -27,20 +28,27 @@ struct MenuPopoverView: View {
             Divider()
             footer
         }
-        .frame(width: 320)
+        .frame(width: 320, height: 460)
         .background(Color(nsColor: .windowBackgroundColor))
-        .sheet(isPresented: $mappingManager.showSettings) {
-            MappingConfigView(mappingManager: mappingManager)
-        }
     }
 
     private var header: some View {
         HStack(spacing: 8) {
-            Image(systemName: "hexagon.fill")
-                .foregroundStyle(.secondary)
+            Image(systemName: syncEngine.isSyncing ? "hexagon.fill" : "hexagon")
+                .foregroundStyle(syncEngine.isSyncing ? Color.accentColor : .secondary)
+                .animation(.easeInOut(duration: 0.3), value: syncEngine.isSyncing)
+
             Text("InkSync")
                 .font(.headline)
+
             Spacer()
+
+            if syncEngine.isSyncing {
+                Text(syncEngine.syncProgress)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -48,10 +56,13 @@ struct MenuPopoverView: View {
 
     private var statusSection: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("状态: \(appState.statusDescription)")
-                .font(.subheadline)
+            HStack(spacing: 8) {
+                statusIcon
+                Text(appState.statusDescription)
+                    .font(.subheadline)
+            }
 
-            if let nextSync = appState.nextSyncTime {
+            if let nextSync = syncEngine.nextSyncTime {
                 Text("下次同步: \(nextSyncTimeText(nextSync))")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -60,6 +71,26 @@ struct MenuPopoverView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+    }
+
+    private var statusIcon: some View {
+        Group {
+            switch appState.syncStatus {
+            case .idle:
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+            case .syncing:
+                ProgressView()
+                    .scaleEffect(0.6)
+                    .frame(width: 14, height: 14)
+            case .failed:
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(.yellow)
+            case .conflict:
+                Image(systemName: "circle.badge.plus")
+                    .foregroundStyle(.orange)
+            }
+        }
     }
 
     private var permissionDeniedBanner: some View {
@@ -96,8 +127,11 @@ struct MenuPopoverView: View {
             Text("📟 设备 (\(appState.onlineDeviceCount)台在线)")
                 .font(.subheadline.weight(.medium))
 
-            ForEach(appState.devices) { device in
-                DeviceRow(device: device)
+            ForEach(mappingManager.devices) { device in
+                DeviceMappingPopoverRow(
+                    device: device,
+                    assignedListNames: mappingManager.assignedListNames(for: device.id)
+                )
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -108,18 +142,26 @@ struct MenuPopoverView: View {
     private var actionButtons: some View {
         HStack(spacing: 10) {
             Button(action: onSyncNow) {
-                Text("立即同步")
-                    .font(.subheadline.weight(.medium))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
+                HStack {
+                    if syncEngine.isSyncing {
+                        ProgressView()
+                            .scaleEffect(0.5)
+                            .frame(width: 12, height: 12)
+                    }
+                    Text(syncEngine.isSyncing ? "同步中..." : "立即同步")
+                }
+                .font(.subheadline.weight(.medium))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
             }
             .buttonStyle(.plain)
             .background(Color.accentColor)
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .disabled(syncEngine.isSyncing)
 
-            Button(action: onViewChanges) {
-                Text("查看今日变更")
+            Button(action: onViewSyncLog) {
+                Text("查看记录")
                     .font(.subheadline.weight(.medium))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
@@ -135,7 +177,7 @@ struct MenuPopoverView: View {
 
     private var footer: some View {
         HStack {
-            Button("打开设置...", action: onOpenSettings)
+            Button("设置...", action: onOpenSettings)
                 .buttonStyle(.plain)
                 .foregroundStyle(Color.accentColor)
 
@@ -155,8 +197,8 @@ struct MenuPopoverView: View {
         timeFormatter.dateFormat = "HH:mm"
 
         let relativeFormatter = RelativeDateTimeFormatter()
-        relativeFormatter.locale = Locale(identifier: "zh_CN")
-        relativeFormatter.unitsStyle = .full
+        relativeFormatter.locale = Locale.current
+        relativeFormatter.unitsStyle = .abbreviated
 
         let time = timeFormatter.string(from: date)
         let relative = relativeFormatter.localizedString(for: date, relativeTo: Date())
@@ -165,8 +207,9 @@ struct MenuPopoverView: View {
     }
 }
 
-private struct DeviceRow: View {
+private struct DeviceMappingPopoverRow: View {
     let device: Device
+    let assignedListNames: [String]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -193,12 +236,20 @@ private struct DeviceRow: View {
             }
 
             HStack(spacing: 0) {
-                Text("│   └─ 同步列表: ")
+                Text("│   └─ 同步: ")
                     .foregroundStyle(.tertiary)
                     .font(.caption)
-                Text(device.syncedLists.joined(separator: ", "))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+
+                if assignedListNames.isEmpty {
+                    Text("未分配")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                } else {
+                    Text(assignedListNames.joined(separator: ", "))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
             }
             .padding(.leading, 8)
         }
@@ -206,8 +257,8 @@ private struct DeviceRow: View {
 
     private func relativeSyncText(_ date: Date) -> String {
         let formatter = RelativeDateTimeFormatter()
-        formatter.locale = Locale(identifier: "zh_CN")
-        formatter.unitsStyle = .full
+        formatter.locale = Locale.current
+        formatter.unitsStyle = .abbreviated
         return formatter.localizedString(for: date, relativeTo: Date())
     }
 }
@@ -217,10 +268,15 @@ private struct DeviceRow: View {
         appState: AppState(),
         eventKitManager: EventKitManager(),
         mappingManager: MappingManager(eventKitManager: EventKitManager(), apiClient: MockAPIClient()),
+        syncEngine: SyncEngine(
+            eventKitManager: EventKitManager(),
+            apiClient: MockAPIClient(),
+            mappingManager: MappingManager(eventKitManager: EventKitManager(), apiClient: MockAPIClient())
+        ),
         onSyncNow: {},
-        onViewChanges: {},
+        onViewSyncLog: {},
         onOpenSettings: {},
         onQuit: {}
     )
-    .frame(width: 320)
+    .frame(width: 320, height: 460)
 }

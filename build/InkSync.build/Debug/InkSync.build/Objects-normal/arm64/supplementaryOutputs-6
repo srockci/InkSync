@@ -1,0 +1,23 @@
+{
+  "/Users/srockci/Projects/InkSync/InkSync/OnboardingWindow.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncLogWindow.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps"
+  }
+}

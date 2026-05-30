@@ -1,0 +1,30 @@
+{
+  "/Users/srockci/Projects/InkSync/InkSync/FlowLayout.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/FlowLayout.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/FlowLayout.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/FlowLayout.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/FlowLayout.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/FlowLayout.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingConfigView.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfigView.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfigView.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfigView.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfigView.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfigView.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncLogStore.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncLogStore.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncLogStore.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncLogStore.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncLogStore.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncLogStore.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncModels.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncModels.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncModels.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncModels.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncModels.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SyncModels.swiftdeps"
+  }
+}

@@ -8,6 +8,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     private let appState = AppState()
     private let eventKitManager: EventKitManager
     private let mappingManager: MappingManager
+    private let syncEngine: SyncEngine
 
     var currentStatus: SyncStatus = .idle {
         didSet {
@@ -16,9 +17,21 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         }
     }
 
-    init(eventKitManager: EventKitManager, mappingManager: MappingManager) {
+    var onOpenSettings: () -> Void
+    var onViewSyncLog: () -> Void
+
+    init(
+        eventKitManager: EventKitManager,
+        mappingManager: MappingManager,
+        syncEngine: SyncEngine,
+        onOpenSettings: @escaping () -> Void,
+        onViewSyncLog: @escaping () -> Void
+    ) {
         self.eventKitManager = eventKitManager
         self.mappingManager = mappingManager
+        self.syncEngine = syncEngine
+        self.onOpenSettings = onOpenSettings
+        self.onViewSyncLog = onViewSyncLog
         super.init()
         setupStatusItem()
         setupPopover()
@@ -40,21 +53,22 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         let popover = NSPopover()
         popover.behavior = .transient
         popover.animates = true
-        popover.contentSize = NSSize(width: 320, height: 420)
+        popover.contentSize = NSSize(width: 320, height: 460)
         popover.delegate = self
 
         let rootView = MenuPopoverView(
             appState: appState,
             eventKitManager: eventKitManager,
             mappingManager: mappingManager,
+            syncEngine: syncEngine,
             onSyncNow: { [weak self] in
                 self?.handleSyncNow()
             },
-            onViewChanges: {
-                print("打开同步记录窗口")
+            onViewSyncLog: { [weak self] in
+                self?.onViewSyncLog()
             },
             onOpenSettings: { [weak self] in
-                self?.mappingManager.showSettings.toggle()
+                self?.onOpenSettings()
             },
             onQuit: {
                 NSApplication.shared.terminate(nil)
@@ -66,8 +80,10 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     }
 
     private func setupRemindersMonitoring() {
-        eventKitManager.startMonitoringChanges {
-            print("Reminders 数据已变更")
+        eventKitManager.startMonitoringChanges { [weak self] in
+            Task { @MainActor [weak self] in
+                self?.mappingManager.loadAvailableLists()
+            }
         }
     }
 
@@ -83,12 +99,8 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     }
 
     private func handleSyncNow() {
-        print("立即同步")
-        currentStatus = .syncing
-
-        Task { @MainActor in
-            try? await Task.sleep(nanoseconds: 3_000_000_000)
-            currentStatus = .idle
+        Task {
+            await syncEngine.syncAll()
         }
     }
 

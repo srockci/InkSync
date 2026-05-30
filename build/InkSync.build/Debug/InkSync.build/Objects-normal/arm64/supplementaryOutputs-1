@@ -1,0 +1,30 @@
+{
+  "/Users/srockci/Projects/InkSync/InkSync/InkSyncApp.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MenuPopoverView.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/Models.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/StatusBarController.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.swiftdeps"
+  }
+}

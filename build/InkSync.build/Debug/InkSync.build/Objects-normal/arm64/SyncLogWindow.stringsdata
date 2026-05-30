@@ -1,0 +1,104 @@
+{
+  "source": "/Users/srockci/Projects/InkSync/InkSync/SyncLogWindow.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "导出成功",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "打开文件",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "关闭",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "同步日志已导出到桌面",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "显示全部",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "同步记录",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无同步记录",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "只看今日",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看全部历史",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "导出日志...",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "-",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld 项",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 176
+        }
+      }
+    ]
+  },
+  "version": 1
+}

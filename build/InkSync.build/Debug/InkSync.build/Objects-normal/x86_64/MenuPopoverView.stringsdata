@@ -1,0 +1,128 @@
+{
+  "source": "/Users/srockci/Projects/InkSync/InkSync/MenuPopoverView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "InkSync",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "下次同步: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "InkSync 需要访问「提醒事项」才能同步待办。请在系统设置中开启权限。",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "打开系统设置",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "无法访问提醒事项",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "📟 设备 (%lld台在线)",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 127
+        }
+      },
+      {
+        "comment": "",
+        "key": "同步中...",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 151
+        }
+      },
+      {
+        "comment": "",
+        "key": "立即同步",
+        "location": {
+          "startingColumn": 66,
+          "startingLine": 151
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看记录",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 164
+        }
+      },
+      {
+        "comment": "",
+        "key": "设置...",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 180
+        }
+      },
+      {
+        "comment": "",
+        "key": "退出 InkSync",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 186
+        }
+      },
+      {
+        "comment": "",
+        "key": "├──",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 217
+        }
+      },
+      {
+        "comment": "",
+        "key": "✅",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 225
+        }
+      },
+      {
+        "comment": "",
+        "key": "│   └─ 同步: ",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 239
+        }
+      },
+      {
+        "comment": "",
+        "key": "未分配",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 244
+        }
+      }
+    ]
+  },
+  "version": 1
+}

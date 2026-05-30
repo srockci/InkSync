@@ -1,0 +1,30 @@
+{
+  "/Users/srockci/Projects/InkSync/InkSync/APIClient.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/APIClient.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/APIClient.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/APIClient.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/APIClient.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingConfig.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfig.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfig.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfig.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfig.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingConfig.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingManager.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingManager.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingManager.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingManager.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingManager.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/MappingManager.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SystemSettings.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SystemSettings.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SystemSettings.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SystemSettings.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SystemSettings.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/SystemSettings.swiftdeps"
+  }
+}

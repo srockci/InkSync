@@ -28,5 +28,7 @@
 	<string>NSApplication</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>InkSync 需要访问「提醒事项」以读取和同步您的待办列表到墨水屏设备。</string>
+	<key>NSUserNotificationAlertStyle</key>
+	<string>alert</string>
 </dict>
 </plist>

@@ -1,0 +1,30 @@
+{
+  "/Users/srockci/Projects/InkSync/InkSync/EKReminder+TodoItem.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EKReminder+TodoItem.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EKReminder+TodoItem.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EKReminder+TodoItem.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EKReminder+TodoItem.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EKReminder+TodoItem.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/EventKitError.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitError.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitError.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitError.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitError.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitError.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/EventKitManager.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitManager.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitManager.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitManager.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitManager.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/EventKitManager.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/TodoItem.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/TodoItem.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/TodoItem.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/TodoItem.dia",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/TodoItem.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/x86_64/TodoItem.swiftdeps"
+  }
+}

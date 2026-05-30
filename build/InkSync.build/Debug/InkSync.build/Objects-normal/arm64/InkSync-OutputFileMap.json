@@ -1,0 +1,239 @@
+{
+  "" : {
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSync-primary.dia",
+    "emit-module-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSync-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSync-primary-emit-module.dia",
+    "pch" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSync-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSync-primary.swiftdeps"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/APIClient.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/APIClient~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/AppConfig.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/AppConfig~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/EKReminder+TodoItem.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EKReminder+TodoItem~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/EventKitError.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitError~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/EventKitManager.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/EventKitManager~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/FlowLayout.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/FlowLayout~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/InkSyncApp.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/InkSyncApp~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingConfig.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfig~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingConfigView.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingConfigView~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MappingManager.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MappingManager~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/MenuPopoverView.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/MenuPopoverView~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/Models.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/Models~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/NotificationManager.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/NotificationManager~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/OnboardingWindow.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/OnboardingWindow~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SettingsWindow.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SettingsWindow~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/StatusBarController.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/StatusBarController~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncEngine.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncEngine~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncLogStore.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogStore~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncLogWindow.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncLogWindow~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SyncModels.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SyncModels~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/SystemSettings.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/SystemSettings~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/InkSync/TodoItem.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/TodoItem~partial.swiftmodule"
+  },
+  "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/srockci/Projects/InkSync/build/InkSync.build/Debug/InkSync.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
