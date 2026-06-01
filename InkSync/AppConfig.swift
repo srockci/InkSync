@@ -21,7 +21,11 @@ final class AppConfig: ObservableObject {
 
     @Published var apiKey: String {
         didSet {
-            defaults.set(apiKey, forKey: apiKeyKey)
+            if apiKey.isEmpty {
+                KeychainHelper.shared.delete("apiKey")
+            } else {
+                KeychainHelper.shared.save(apiKey, forKey: "apiKey")
+            }
         }
     }
 
@@ -62,7 +66,7 @@ final class AppConfig: ObservableObject {
 
     private init() {
         self.apiURL = defaults.string(forKey: apiURLKey) ?? "https://cloud.zectrix.com/open/v1"
-        self.apiKey = defaults.string(forKey: apiKeyKey) ?? ""
+        self.apiKey = KeychainHelper.shared.get("apiKey") ?? ""
 
         let strategyRaw = defaults.string(forKey: conflictStrategyKey) ?? ConflictStrategy.timestampPriority.rawValue
         self.conflictStrategy = ConflictStrategy(rawValue: strategyRaw) ?? .timestampPriority
