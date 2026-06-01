@@ -7,7 +7,7 @@ enum SyncStatus {
     case conflict
 }
 
-struct Device: Identifiable {
+struct Device: Identifiable, Codable {
     let id: String
     let alias: String
     let lastSyncTime: Date?

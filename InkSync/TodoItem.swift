@@ -5,7 +5,7 @@ enum TodoSource: String, Codable, Equatable {
     case remote
 }
 
-struct TodoItem: Identifiable, Equatable {
+struct TodoItem: Identifiable, Equatable, Codable {
     let id: String
     var title: String
     var notes: String?

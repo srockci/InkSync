@@ -25,7 +25,7 @@ struct OnboardingView: View {
             Divider()
             navigationButtons
         }
-        .frame(width: 480, height: 420)
+        .frame(width: 480, height: 480)
     }
 
     private var progressIndicator: some View {
@@ -319,15 +319,28 @@ struct OnboardingView: View {
     private func verifyApiKey() {
         isVerifying = true
         verifyError = nil
+        let logPath = NSTemporaryDirectory() + "inksync_verify.log"
+        try? "START\n".write(toFile: logPath, atomically: true, encoding: .utf8)
 
         Task {
+            let testClient = RealAPIClient(apiKey: apiKey)
+            try? "RealAPIClient created\n".write(toFile: logPath, atomically: true, encoding: .utf8)
             do {
-                _ = try await apiClient.fetchDevices()
+                try? "Calling fetchDevices...\n".write(toFile: logPath, atomically: true, encoding: .utf8)
+                _ = try await testClient.fetchDevices()
+                try? "Success\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 await MainActor.run {
                     apiVerified = true
                     isVerifying = false
                 }
+            } catch let error as APIError {
+                try? "APIError: \(error)\n".write(toFile: logPath, atomically: true, encoding: .utf8)
+                await MainActor.run {
+                    verifyError = error.errorDescription ?? "验证失败"
+                    isVerifying = false
+                }
             } catch {
+                try? "Error: \(error)\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 await MainActor.run {
                     verifyError = "验证失败: \(error.localizedDescription)"
                     isVerifying = false
@@ -388,7 +401,9 @@ final class OnboardingWindowController: NSWindowController {
         let hostingController = NSHostingController(rootView: onboardingView)
         let window = NSWindow(contentViewController: hostingController)
         window.title = "InkSync 设置向导"
-        window.styleMask = [.titled, .closable]
+        window.styleMask = [.titled, .closable, .resizable]
+        window.minSize = NSSize(width: 480, height: 480)
+        window.maxSize = NSSize(width: 480, height: 480)
         window.center()
 
         self.init(window: window)

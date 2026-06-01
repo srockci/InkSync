@@ -14,7 +14,19 @@ struct InkSyncApp: App {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     let eventKitManager = EventKitManager()
-    let apiClient = MockAPIClient()
+    private var _realApiClient: RealAPIClient?
+    private let _mockApiClient = MockAPIClient()
+
+    var apiClient: APIClient {
+        if appConfig.apiKey.isEmpty {
+            return _mockApiClient
+        }
+        if _realApiClient == nil {
+            _realApiClient = RealAPIClient()
+        }
+        return _realApiClient!
+    }
+
     let appConfig = AppConfig.shared
     lazy var mappingManager = MappingManager(eventKitManager: eventKitManager, apiClient: apiClient)
     lazy var syncEngine = SyncEngine(

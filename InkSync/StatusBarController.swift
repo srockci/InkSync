@@ -53,7 +53,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         let popover = NSPopover()
         popover.behavior = .transient
         popover.animates = true
-        popover.contentSize = NSSize(width: 320, height: 460)
+        popover.contentSize = NSSize(width: 320, height: 380)
         popover.delegate = self
 
         let rootView = MenuPopoverView(
@@ -99,7 +99,9 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     }
 
     private func handleSyncNow() {
-        Task {
+        let popoverToClose = self.popover
+        popoverToClose?.performClose(nil)
+        Task { @MainActor in
             await syncEngine.syncAll()
         }
     }

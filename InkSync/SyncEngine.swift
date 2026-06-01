@@ -64,11 +64,6 @@ final class SyncEngine: ObservableObject {
         syncProgress = "开始同步..."
 
         for device in mappingManager.devices {
-            if !device.isOnline {
-                syncProgress = "\(device.alias) 离线，跳过"
-                continue
-            }
-
             currentSyncDevice = device
             syncProgress = "同步 \(device.alias)..."
 
@@ -114,7 +109,12 @@ final class SyncEngine: ObservableObject {
         }
 
         syncProgress = "获取 \(device.alias) 远程数据..."
-        let remoteTodos = try await apiClient.fetchTodos(deviceId: device.id, status: nil)
+        var remoteTodos: [TodoItem] = []
+        do {
+            remoteTodos = try await apiClient.fetchTodos(deviceId: device.id, status: nil)
+        } catch {
+            throw error
+        }
 
         syncProgress = "计算差异..."
         let diff = calculateDiff(local: localTodos, remote: remoteTodos)
@@ -136,11 +136,13 @@ final class SyncEngine: ObservableObject {
         let conflicts = detectConflicts(local: localTodos, remote: remoteTodos, lastSyncTime: lastSyncTime)
         let resolved = resolveConflicts(conflicts, strategy: conflictStrategy)
 
+        let remoteDict = Dictionary(uniqueKeysWithValues: remoteTodos.map { ($0.id, $0) })
+
         syncProgress = "推送本地变更到 \(device.alias)..."
         var pushedCount = 0
         for todo in diff.toPush {
             do {
-                if localTodos.contains(where: { $0.id == todo.id }) {
+                if remoteDict[todo.id] != nil {
                     _ = try await apiClient.updateTodo(todo)
                 } else {
                     _ = try await apiClient.createTodo(todo, deviceId: device.id)

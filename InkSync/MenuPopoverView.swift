@@ -27,9 +27,12 @@ struct MenuPopoverView: View {
             actionButtons
             Divider()
             footer
-        }
-        .frame(width: 320, height: 460)
+}
+        .frame(width: 320, height: 380)
         .background(Color(nsColor: .windowBackgroundColor))
+        .task {
+            await mappingManager.loadDevices()
+        }
     }
 
     private var header: some View {
@@ -48,10 +51,12 @@ struct MenuPopoverView: View {
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
+                    .id(syncEngine.syncProgress)
+                    .transition(.opacity)
             }
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 
     private var statusSection: some View {
@@ -70,7 +75,7 @@ struct MenuPopoverView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 
     private var statusIcon: some View {
@@ -123,7 +128,7 @@ struct MenuPopoverView: View {
     }
 
     private var deviceSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("📟 设备 (\(appState.onlineDeviceCount)台在线)")
                 .font(.subheadline.weight(.medium))
 
@@ -136,7 +141,7 @@ struct MenuPopoverView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 
     private var actionButtons: some View {
@@ -152,7 +157,7 @@ struct MenuPopoverView: View {
                 }
                 .font(.subheadline.weight(.medium))
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
+                .padding(.vertical, 6)
             }
             .buttonStyle(.plain)
             .background(Color.accentColor)
@@ -164,7 +169,7 @@ struct MenuPopoverView: View {
                 Text("查看记录")
                     .font(.subheadline.weight(.medium))
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 6)
             }
             .buttonStyle(.plain)
             .background(Color(nsColor: .controlBackgroundColor))
@@ -172,7 +177,7 @@ struct MenuPopoverView: View {
             .clipShape(RoundedRectangle(cornerRadius: 6))
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 
     private var footer: some View {
@@ -189,7 +194,7 @@ struct MenuPopoverView: View {
         }
         .font(.caption)
         .padding(.horizontal, 16)
-        .padding(.vertical, 10)
+        .padding(.vertical, 6)
     }
 
     private func nextSyncTimeText(_ date: Date) -> String {
