@@ -132,6 +132,15 @@ final class EventKitManager: ObservableObject {
         try eventStore.save(reminder, commit: true)
     }
 
+    func setCompleted(_ completed: Bool, forReminderId id: String) async throws {
+        try ensureAuthorized()
+        guard let reminder = eventStore.calendarItem(withIdentifier: id) as? EKReminder else {
+            return
+        }
+        reminder.isCompleted = completed
+        try eventStore.save(reminder, commit: true)
+    }
+
     func saveTodo(_ todo: TodoItem) async throws {
         try ensureAuthorized()
 

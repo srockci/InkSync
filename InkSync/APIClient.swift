@@ -6,6 +6,7 @@ protocol APIClient {
     func createTodo(_ todo: TodoItem, deviceId: String) async throws -> TodoItem
     func updateTodo(_ todo: TodoItem) async throws -> TodoItem
     func deleteTodo(id: String, deviceId: String) async throws
+    func markComplete(todoId: String, completed: Bool) async throws
 }
 
 final class MockAPIClient: APIClient {
@@ -62,5 +63,9 @@ final class MockAPIClient: APIClient {
     func deleteTodo(id: String, deviceId: String) async throws {
         try await Task.sleep(nanoseconds: 200_000_000)
         mockTodos[deviceId]?.removeAll { $0.id == id }
+    }
+
+    func markComplete(todoId: String, completed: Bool) async throws {
+        try await Task.sleep(nanoseconds: 100_000_000)
     }
 }

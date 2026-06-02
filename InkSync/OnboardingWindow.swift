@@ -319,28 +319,21 @@ struct OnboardingView: View {
     private func verifyApiKey() {
         isVerifying = true
         verifyError = nil
-        let logPath = NSTemporaryDirectory() + "inksync_verify.log"
-        try? "START\n".write(toFile: logPath, atomically: true, encoding: .utf8)
 
         Task {
             let testClient = RealAPIClient(apiKey: apiKey)
-            try? "RealAPIClient created\n".write(toFile: logPath, atomically: true, encoding: .utf8)
             do {
-                try? "Calling fetchDevices...\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 _ = try await testClient.fetchDevices()
-                try? "Success\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 await MainActor.run {
                     apiVerified = true
                     isVerifying = false
                 }
             } catch let error as APIError {
-                try? "APIError: \(error)\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 await MainActor.run {
                     verifyError = error.errorDescription ?? "验证失败"
                     isVerifying = false
                 }
             } catch {
-                try? "Error: \(error)\n".write(toFile: logPath, atomically: true, encoding: .utf8)
                 await MainActor.run {
                     verifyError = "验证失败: \(error.localizedDescription)"
                     isVerifying = false

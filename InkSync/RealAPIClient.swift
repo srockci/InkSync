@@ -76,6 +76,7 @@ struct TodoDTO: Decodable {
         var dict: [String: Any] = [
             "title": item.title,
             "completed": item.isCompleted,
+            "status": item.isCompleted ? 1 : 0,
             "priority": item.priority,
             "deviceId": deviceId
         ]
@@ -160,7 +161,6 @@ final class RealAPIClient: APIClient {
         do {
             (data, response) = try await session.data(for: request)
         } catch {
-            try? "Network error: \(error)\n".write(toFile: "/tmp/inksync_verify.log", atomically: true, encoding: .utf8)
             throw APIError.networkError(error)
         }
 
@@ -182,11 +182,9 @@ final class RealAPIClient: APIClient {
             } catch let error as APIError {
                 throw error
             } catch {
-                try? "Decoding error: \(error)\n".write(toFile: "/tmp/inksync_verify.log", atomically: true, encoding: .utf8)
                 throw APIError.decodingError(error)
             }
         case 401:
-            try? "401 Unauthorized, body: \(bodyString ?? "nil")\n".write(toFile: "/tmp/inksync_verify.log", atomically: true, encoding: .utf8)
             throw APIError.unauthorized
         default:
             throw APIError.unexpectedResponse(httpResponse.statusCode, bodyString)
@@ -305,6 +303,31 @@ final class RealAPIClient: APIClient {
 
         switch httpResponse.statusCode {
         case 200...299, 404:
+            return
+        case 401:
+            throw APIError.unauthorized
+        default:
+            throw APIError.serverError(httpResponse.statusCode)
+        }
+    }
+
+    func markComplete(todoId: String, completed: Bool) async throws {
+        let action = completed ? "complete" : "incomplete"
+        let url = URL(string: "\(baseURL)/todos/\(todoId)/\(action)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        let (data, response) = try await session.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+
+        switch httpResponse.statusCode {
+        case 200...299:
             return
         case 401:
             throw APIError.unauthorized

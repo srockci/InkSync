@@ -136,29 +136,38 @@ final class SyncEngine: ObservableObject {
         let conflicts = detectConflicts(local: localTodos, remote: remoteTodos, lastSyncTime: lastSyncTime)
         let resolved = resolveConflicts(conflicts, strategy: conflictStrategy)
 
-        let remoteDict = Dictionary(uniqueKeysWithValues: remoteTodos.map { ($0.id, $0) })
-
-        syncProgress = "推送本地变更到 \(device.alias)..."
-        var pushedCount = 0
-        for todo in diff.toPush {
-            do {
-                if remoteDict[todo.id] != nil {
-                    _ = try await apiClient.updateTodo(todo)
-                } else {
-                    _ = try await apiClient.createTodo(todo, deviceId: device.id)
-                }
-                pushedCount += 1
-            } catch {
-                print("推送失败: \(error)")
-            }
-        }
+        let localByTitle = Dictionary(grouping: localTodos, by: { $0.title.lowercased() })
+            .mapValues { $0.first! }
+        let remoteByTitle = Dictionary(grouping: remoteTodos, by: { $0.title.lowercased() })
+            .mapValues { $0.first! }
 
         syncProgress = "拉取远程变更到 \(device.alias)..."
         var pulledCount = 0
-        for todo in diff.toPull {
+        let targetListId = listIds.first
+        for todo in remoteTodos {
             do {
-                if resolved.contains(where: { $0.id == todo.id }) {
-                    try await eventKitManager.saveTodo(todo)
+                let key = todo.title.lowercased()
+                if let existing = localByTitle[key] {
+                    if !existing.isCompleted && todo.isCompleted {
+                        try await eventKitManager.setCompleted(true, forReminderId: existing.id)
+                        pulledCount += 1
+                    }
+                } else if !todo.isCompleted, let targetListId {
+                    var fixed = todo
+                    fixed = TodoItem(
+                        id: todo.id,
+                        title: todo.title,
+                        notes: todo.notes,
+                        isCompleted: todo.isCompleted,
+                        dueDate: todo.dueDate,
+                        dueTime: todo.dueTime,
+                        priority: todo.priority,
+                        listId: targetListId,
+                        listName: todo.listName,
+                        lastModified: todo.lastModified,
+                        source: todo.source
+                    )
+                    try await eventKitManager.saveTodo(fixed)
                     pulledCount += 1
                 }
             } catch {
@@ -166,9 +175,58 @@ final class SyncEngine: ObservableObject {
             }
         }
 
-        for todo in resolved {
-            if !diff.toPull.contains(where: { $0.id == todo.id }) {
-                try? await eventKitManager.saveTodo(todo)
+        let refreshedLocalReminders = await eventKitManager.fetchReminders(from: listIds)
+        let refreshedLocalTodos = refreshedLocalReminders.map { reminder -> TodoItem in
+            let lid = reminder.calendar.calendarIdentifier
+            return reminder.toTodoItem(listId: lid, listName: calendarNames[lid] ?? reminder.calendar.title)
+        }
+        let refreshedLocalByTitle = Dictionary(grouping: refreshedLocalTodos, by: { $0.title.lowercased() })
+            .mapValues { $0.first! }
+
+        syncProgress = "推送本地变更到 \(device.alias)..."
+        var pushedCount = 0
+        for todo in refreshedLocalTodos {
+            do {
+                let key = todo.title.lowercased()
+                if let existing = remoteByTitle[key] {
+                    let onlyCompletionChanged = existing.isCompleted != todo.isCompleted
+                        && existing.title == todo.title
+                        && existing.notes == todo.notes
+                        && existing.dueDate == todo.dueDate
+                        && existing.priority == todo.priority
+                    if onlyCompletionChanged {
+                        try await apiClient.markComplete(todoId: existing.id, completed: todo.isCompleted)
+                        pushedCount += 1
+                    } else {
+                        let otherChanged = existing.title != todo.title
+                            || existing.notes != todo.notes
+                            || existing.dueDate != todo.dueDate
+                            || existing.priority != todo.priority
+                        if otherChanged {
+                            let updated = TodoItem(
+                                id: existing.id,
+                                title: todo.title,
+                                notes: todo.notes,
+                                isCompleted: todo.isCompleted,
+                                dueDate: todo.dueDate,
+                                dueTime: todo.dueTime,
+                                priority: todo.priority,
+                                listId: todo.listId,
+                                listName: todo.listName,
+                                lastModified: todo.lastModified,
+                                source: todo.source
+                            )
+                            _ = try await apiClient.updateTodo(updated)
+                            pushedCount += 1
+                            try await apiClient.markComplete(todoId: existing.id, completed: todo.isCompleted)
+                        }
+                    }
+                } else if !todo.isCompleted {
+                    _ = try await apiClient.createTodo(todo, deviceId: device.id)
+                    pushedCount += 1
+                }
+            } catch {
+                print("推送失败: \(error)")
             }
         }
 

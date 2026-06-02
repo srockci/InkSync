@@ -65,7 +65,7 @@ struct SettingsView: View {
                     .textFieldStyle(.roundedBorder)
 
                 HStack {
-                    Button("验证连接") {
+                    Button("获取设备") {
                         verifyConnection()
                     }
                     .disabled(isVerifying || appConfig.apiKey.isEmpty)
@@ -202,15 +202,19 @@ struct SettingsView: View {
         connectionStatus = .idle
 
         Task {
+            let client = RealAPIClient(apiKey: appConfig.apiKey)
             do {
-                _ = try await apiClient.fetchDevices()
+                let devices = try await client.fetchDevices()
                 await MainActor.run {
-                    connectionStatus = .success
+                    mappingManager.devices = devices
+                    connectionStatus = devices.isEmpty
+                        ? .failed("未获取到设备")
+                        : .success
                     isVerifying = false
                 }
             } catch {
                 await MainActor.run {
-                    connectionStatus = .failed("连接失败")
+                    connectionStatus = .failed("获取失败: \(error.localizedDescription)")
                     isVerifying = false
                 }
             }
