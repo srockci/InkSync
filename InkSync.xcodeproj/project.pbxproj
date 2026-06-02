@@ -111,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				A10000050000000000000002 /* InkSync */,
-				A10000050000000000000004 /* InkSyncTests */,
 				A10000050000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				A10000030000000000000001 /* InkSync.app */,
-				A10000030000000000000002 /* InkSyncTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,24 +190,6 @@
 			productReference = A10000030000000000000001 /* InkSync.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A10000060000000000000002 /* InkSyncTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A10000090000000000000003 /* Build configuration list for PBXNativeTarget "InkSyncTests" */;
-			buildPhases = (
-				A10000070000000000000002 /* Sources */,
-				A10000040000000000000002 /* Frameworks */,
-				A10000080000000000000002 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A100000D0000000000000001 /* PBXTargetDependency */,
-			);
-			name = InkSyncTests;
-			productName = InkSyncTests;
-			productReference = A10000030000000000000002 /* InkSyncTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -244,7 +224,6 @@
 			projectRoot = "";
 			targets = (
 				A10000060000000000000001 /* InkSync */,
-				A10000060000000000000002 /* InkSyncTests */,
 			);
 		};
 /* End PBXProject section */
@@ -302,11 +281,6 @@ A10000010000000000000017 /* SettingsWindow.swift in Sources */,
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A100000D0000000000000001 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A10000060000000000000001 /* InkSync */;
-			targetProxy = A100000C0000000000000001 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -473,54 +447,6 @@ A10000010000000000000017 /* SettingsWindow.swift in Sources */,
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		A100000B0000000000000005 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSRemindersUsageDescription = "InkSync 测试需要访问提醒事项以验证 EventKit 集成。";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inksync.app.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InkSync.app/Contents/MacOS/InkSync";
-			};
-			name = Debug;
-		};
-		A100000B0000000000000006 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSRemindersUsageDescription = "InkSync 测试需要访问提醒事项以验证 EventKit 集成。";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.inksync.app.tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InkSync.app/Contents/MacOS/InkSync";
 			};
 			name = Release;
 		};

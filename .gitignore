@@ -19,3 +19,5 @@ Packages/
 
 *.xcuserstate
 *.xcuserdatad
+
+InkSyncTests/
