@@ -2,6 +2,10 @@
 
 macOS 菜单栏应用，将 Apple Reminders 同步到墨水屏云端。
 
+## License
+
+[PolyForm Noncommercial 1.0.0](LICENSE) — 禁止任何商业用途。如需商用请联系作者获取授权。
+
 ## 功能
 
 - 菜单栏常驻，轻量不打扰
