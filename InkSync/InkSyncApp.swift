@@ -40,6 +40,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var onboardingWindowController: OnboardingWindowController?
     var syncLogWindowController: SyncLogWindowController?
 
+    private var visibleWindowCount = 0
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupWindowControllers()
         setupStatusBar()
@@ -47,11 +49,40 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         requestPermissions()
 
         NotificationCenter.default.addObserver(
+            forName: NSWindow.didBecomeKeyNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.visibleWindowCount = NSApp.windows.filter { $0.isVisible && $0.canBecomeKey }.count
+            self?.updateDockVisibility()
+        }
+
+        NotificationCenter.default.addObserver(
+            forName: NSWindow.willCloseNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.visibleWindowCount = NSApp.windows.filter { $0.isVisible && $0.canBecomeKey }.count
+                self?.updateDockVisibility()
+            }
+        }
+
+        NotificationCenter.default.addObserver(
             forName: NSApplication.didBecomeActiveNotification,
             object: nil,
             queue: .main
         ) { [weak self] _ in
             self?.eventKitManager.refreshAuthorizationStatus()
+        }
+    }
+
+    private func updateDockVisibility() {
+        let shouldShowInDock = visibleWindowCount > 0
+        let currentPolicy = NSApp.activationPolicy()
+        let desiredPolicy: NSApplication.ActivationPolicy = shouldShowInDock ? .regular : .accessory
+        if currentPolicy != desiredPolicy {
+            NSApp.setActivationPolicy(desiredPolicy)
         }
     }
 

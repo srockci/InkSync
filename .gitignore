@@ -2,6 +2,9 @@
 *.swp
 *.swo
 *~
+*.tmp
+*.bak
+*.log
 
 .xcworkspace/xcuserdata/
 .xcodeproj/xcuserdata/
@@ -16,8 +19,20 @@ Packages/
 *.keychain
 *.p12
 *.mobileprovision
+*.pem
+*.key
+*.env
+*.local
 
 *.xcuserstate
 *.xcuserdatad
 
 InkSyncTests/
+
+secrets.dat
+*.dat
+!Assets.xcassets/**/*.dat
+
+APIKeys.swift
+Secrets.swift
+Config.local.swift

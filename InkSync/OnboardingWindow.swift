@@ -88,7 +88,8 @@ struct OnboardingView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
-                SecureField("输入 API Key", text: $apiKey)
+                TextField("输入 API Key", text: $apiKey)
+                    .textContentType(nil)
                     .textFieldStyle(.roundedBorder)
 
                 if let error = verifyError {

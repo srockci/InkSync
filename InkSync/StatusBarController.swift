@@ -53,7 +53,6 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
         let popover = NSPopover()
         popover.behavior = .transient
         popover.animates = true
-        popover.contentSize = NSSize(width: 320, height: 380)
         popover.delegate = self
 
         let rootView = MenuPopoverView(

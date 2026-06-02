@@ -6,6 +6,7 @@ struct SettingsView: View {
     @ObservedObject var mappingManager: MappingManager
     @ObservedObject var syncEngine: SyncEngine
     let apiClient: APIClient
+    var onDismiss: () -> Void = {}
 
     @State private var connectionStatus: ConnectionStatus = .idle
     @State private var isVerifying = false
@@ -61,7 +62,8 @@ struct SettingsView: View {
                 Text("API Key")
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                SecureField("输入 API Key", text: $appConfig.apiKey)
+                TextField("输入 API Key", text: $appConfig.apiKey)
+                    .textContentType(nil)
                     .textFieldStyle(.roundedBorder)
 
                 HStack {
@@ -225,6 +227,7 @@ struct SettingsView: View {
         mappingManager.saveConfig()
         syncEngine.stopPolling()
         syncEngine.startPolling()
+        onDismiss()
     }
 }
 
@@ -332,17 +335,22 @@ final class SettingsWindowController: NSWindowController {
         syncEngine: SyncEngine,
         apiClient: APIClient
     ) {
+        let window = NSWindow()
+        window.title = "设置"
+        window.styleMask = [.titled, .closable, .miniaturizable]
+
         let settingsView = SettingsView(
             appConfig: appConfig,
             mappingManager: mappingManager,
             syncEngine: syncEngine,
-            apiClient: apiClient
+            apiClient: apiClient,
+            onDismiss: { [weak window] in
+                window?.close()
+            }
         )
 
         let hostingController = NSHostingController(rootView: settingsView)
-        let window = NSWindow(contentViewController: hostingController)
-        window.title = "设置"
-        window.styleMask = [.titled, .closable, .miniaturizable]
+        window.contentViewController = hostingController
         window.center()
 
         self.init(window: window)

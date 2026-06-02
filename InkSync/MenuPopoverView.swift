@@ -25,10 +25,9 @@ struct MenuPopoverView: View {
             deviceSection
             Divider()
             actionButtons
-            Divider()
             footer
-}
-        .frame(width: 320, height: 380)
+        }
+        .frame(width: 320)
         .background(Color(nsColor: .windowBackgroundColor))
         .task {
             await mappingManager.loadDevices()
