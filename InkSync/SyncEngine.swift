@@ -143,11 +143,15 @@ final class SyncEngine: ObservableObject {
 
         syncProgress = "拉取远程变更到 \(device.alias)..."
         var pulledCount = 0
+        var pullErrors: [String] = []
         let targetListId = listIds.first
         for todo in remoteTodos {
             do {
                 let key = todo.title.lowercased()
                 if let existing = localByTitle[key] {
+                    if existing.cloudId != todo.id {
+                        CloudIdStore.shared.setCloudId(todo.id, for: existing.id)
+                    }
                     if !existing.isCompleted && todo.isCompleted {
                         try await eventKitManager.setCompleted(true, forReminderId: existing.id)
                         pulledCount += 1
@@ -171,24 +175,37 @@ final class SyncEngine: ObservableObject {
                     pulledCount += 1
                 }
             } catch {
-                print("拉取失败: \(error)")
+                pullErrors.append("\(todo.title): \(error.localizedDescription)")
             }
         }
 
         let refreshedLocalReminders = await eventKitManager.fetchReminders(from: listIds)
         let refreshedLocalTodos = refreshedLocalReminders.map { reminder -> TodoItem in
             let lid = reminder.calendar.calendarIdentifier
-            return reminder.toTodoItem(listId: lid, listName: calendarNames[lid] ?? reminder.calendar.title)
+            var item = reminder.toTodoItem(listId: lid, listName: calendarNames[lid] ?? reminder.calendar.title)
+            item.cloudId = CloudIdStore.shared.cloudId(for: item.id)
+            return item
         }
         let refreshedLocalByTitle = Dictionary(grouping: refreshedLocalTodos, by: { $0.title.lowercased() })
             .mapValues { $0.first! }
+        let remoteByCloudId = Dictionary(
+            refreshedLocalTodos.compactMap { todo -> (String, TodoItem)? in
+                guard let cid = todo.cloudId else { return nil }
+                if let remote = remoteTodos.first(where: { $0.id == cid }) {
+                    return (cid, remote)
+                }
+                return nil
+            },
+            uniquingKeysWith: { first, _ in first }
+        )
 
         syncProgress = "推送本地变更到 \(device.alias)..."
         var pushedCount = 0
+        var pushErrors: [String] = []
+        var adoptedCloudIds: Set<String> = []
         for todo in refreshedLocalTodos {
             do {
-                let key = todo.title.lowercased()
-                if let existing = remoteByTitle[key] {
+                if let cid = todo.cloudId, let existing = remoteByCloudId[cid] {
                     let onlyCompletionChanged = existing.isCompleted != todo.isCompleted
                         && existing.title == todo.title
                         && existing.notes == todo.notes
@@ -221,12 +238,21 @@ final class SyncEngine: ObservableObject {
                             try await apiClient.markComplete(todoId: existing.id, completed: todo.isCompleted)
                         }
                     }
-                } else if !todo.isCompleted {
-                    _ = try await apiClient.createTodo(todo, deviceId: device.id)
+                } else if let existing = remoteByTitle[todo.title.lowercased()],
+                          !adoptedCloudIds.contains(existing.id) {
+                    CloudIdStore.shared.setCloudId(existing.id, for: todo.id)
+                    adoptedCloudIds.insert(existing.id)
+                    if existing.isCompleted != todo.isCompleted {
+                        try await apiClient.markComplete(todoId: existing.id, completed: todo.isCompleted)
+                    }
+                    pushedCount += 1
+                } else {
+                    let created = try await apiClient.createTodo(todo, deviceId: device.id)
+                    CloudIdStore.shared.setCloudId(created.id, for: todo.id)
                     pushedCount += 1
                 }
             } catch {
-                print("推送失败: \(error)")
+                pushErrors.append("\(todo.title): \(error.localizedDescription)")
             }
         }
 
@@ -234,12 +260,20 @@ final class SyncEngine: ObservableObject {
         let recordType: SyncRecordType = conflicts.isEmpty ? (pushedCount > 0 ? .push : .pull)
             : (conflicts.isEmpty == false ? .conflict : .noChange)
 
+        var details = buildDetails(pushed: pushedCount, pulled: pulledCount, resolved: conflicts.count)
+        if !pushErrors.isEmpty {
+            details += "\n推送失败:\n" + pushErrors.prefix(5).joined(separator: "\n")
+        }
+        if !pullErrors.isEmpty {
+            details += "\n拉取失败:\n" + pullErrors.prefix(5).joined(separator: "\n")
+        }
+
         let record = SyncRecord(
             id: UUID(),
             timestamp: Date(),
             deviceId: device.id,
             type: recordType,
-            details: buildDetails(pushed: pushedCount, pulled: pulledCount, resolved: conflicts.count),
+            details: details,
             itemCount: totalChanges
         )
         syncLogStore.addRecord(record)

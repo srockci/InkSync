@@ -5,8 +5,11 @@ struct MenuPopoverView: View {
     @ObservedObject var eventKitManager: EventKitManager
     @ObservedObject var mappingManager: MappingManager
     @ObservedObject var syncEngine: SyncEngine
+    @ObservedObject var recurringEngine: RecurringEngine
     var onSyncNow: () -> Void
     var onViewSyncLog: () -> Void
+    var onOpenRecurringManager: () -> Void
+    var onOpenRecurringLog: () -> Void
     var onOpenSettings: () -> Void
     var onQuit: () -> Void
 
@@ -25,12 +28,16 @@ struct MenuPopoverView: View {
             deviceSection
             Divider()
             actionButtons
+            recurringSection
             footer
         }
         .frame(width: 320)
         .background(Color(nsColor: .windowBackgroundColor))
         .task {
             await mappingManager.loadDevices()
+        }
+        .task {
+            recurringEngine.reload()
         }
     }
 
@@ -128,7 +135,7 @@ struct MenuPopoverView: View {
 
     private var deviceSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("📟 设备 (\(appState.onlineDeviceCount)台在线)")
+            Text("📟 设备 (\(mappingManager.devices.count)台)")
                 .font(.subheadline.weight(.medium))
 
             ForEach(mappingManager.devices) { device in
@@ -177,6 +184,48 @@ struct MenuPopoverView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+    }
+
+    private var recurringSection: some View {
+        HStack {
+            Button {
+                onOpenRecurringManager()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.caption)
+                    Text("周期备忘")
+                        .font(.caption)
+                    Image(systemName: "chevron.right")
+                        .font(.caption2)
+                }
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(Color.accentColor)
+
+            Spacer()
+
+            Button {
+                onOpenRecurringLog()
+            } label: {
+                HStack(spacing: 2) {
+                    Image(systemName: "doc.text")
+                        .font(.caption2)
+                    Text("日志")
+                        .font(.caption)
+                }
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(Color.accentColor)
+
+            if recurringEngine.todayGeneratedCount > 0 {
+                Text("今日: \(recurringEngine.todayGeneratedCount)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 6)
     }
 
     private var footer: some View {
@@ -277,8 +326,14 @@ private struct DeviceMappingPopoverRow: View {
             apiClient: MockAPIClient(),
             mappingManager: MappingManager(eventKitManager: EventKitManager(), apiClient: MockAPIClient())
         ),
+        recurringEngine: RecurringEngine(
+            eventKitManager: EventKitManager(),
+            mappingManager: MappingManager(eventKitManager: EventKitManager(), apiClient: MockAPIClient())
+        ),
         onSyncNow: {},
         onViewSyncLog: {},
+        onOpenRecurringManager: {},
+        onOpenRecurringLog: {},
         onOpenSettings: {},
         onQuit: {}
     )

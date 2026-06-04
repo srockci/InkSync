@@ -102,13 +102,6 @@ struct SyncLogView: View {
 
     private var footerButtons: some View {
         HStack {
-            Button(showAllRecords ? "只看今日" : "查看全部历史") {
-                showAllRecords.toggle()
-            }
-            .buttonStyle(.plain)
-            .foregroundStyle(Color.accentColor)
-            .font(.caption)
-
             Spacer()
 
             Button("导出日志...") {
@@ -260,7 +253,7 @@ final class SyncLogWindowController: NSWindowController {
     }
 
     func showWindow() {
-        window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        window?.makeKeyAndOrderFront(nil)
     }
 }

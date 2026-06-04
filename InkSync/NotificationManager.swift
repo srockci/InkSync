@@ -79,4 +79,36 @@ final class NotificationManager: ObservableObject {
 
         UNUserNotificationCenter.current().add(request)
     }
+
+    func notifyRecurringSuccess(title: String, targets: Int) {
+        guard isAuthorized else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "周期备忘已生成"
+        content.body = "「\(title)」已写入 Apple Reminders，云端同步将自动完成"
+        content.sound = .default
+
+        let request = UNNotificationRequest(
+            identifier: "recurring_success_\(UUID().uuidString)",
+            content: content,
+            trigger: nil
+        )
+        UNUserNotificationCenter.current().add(request)
+    }
+
+    func notifyRecurringFailure(title: String) {
+        guard isAuthorized else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "周期备忘生成失败"
+        content.body = "「\(title)」生成失败，请检查网络或配置"
+        content.sound = .defaultCritical
+
+        let request = UNNotificationRequest(
+            identifier: "recurring_failure_\(UUID().uuidString)",
+            content: content,
+            trigger: nil
+        )
+        UNUserNotificationCenter.current().add(request)
+    }
 }

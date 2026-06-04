@@ -404,7 +404,7 @@ final class OnboardingWindowController: NSWindowController {
     }
 
     func showWindow() {
-        window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        window?.makeKeyAndOrderFront(nil)
     }
 }

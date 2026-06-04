@@ -357,7 +357,7 @@ final class SettingsWindowController: NSWindowController {
     }
 
     func showWindow() {
-        window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        window?.makeKeyAndOrderFront(nil)
     }
 }

@@ -34,11 +34,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         apiClient: apiClient,
         mappingManager: mappingManager
     )
+    lazy var recurringEngine = RecurringEngine(
+        eventKitManager: eventKitManager,
+        mappingManager: mappingManager
+    )
 
     var statusBarController: StatusBarController?
     var settingsWindowController: SettingsWindowController?
     var onboardingWindowController: OnboardingWindowController?
     var syncLogWindowController: SyncLogWindowController?
+    var recurringWindowController: RecurringRemindersWindowController?
+    var recurringLogWindowController: RecurringLogWindowController?
 
     private var visibleWindowCount = 0
 
@@ -111,11 +117,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             eventKitManager: eventKitManager,
             mappingManager: mappingManager,
             syncEngine: syncEngine,
+            recurringEngine: recurringEngine,
             onOpenSettings: { [weak self] in
                 self?.showSettings()
             },
             onViewSyncLog: { [weak self] in
                 self?.showSyncLog()
+            },
+            onOpenRecurringManager: { [weak self] in
+                self?.showRecurringManager()
+            },
+            onOpenRecurringLog: { [weak self] in
+                self?.showRecurringLog()
             }
         )
 
@@ -126,6 +139,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func setupSyncEngine() {
         syncEngine.startPolling()
+        recurringEngine.start()
     }
 
     private func requestPermissions() {
@@ -147,5 +161,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func showOnboarding() {
         onboardingWindowController?.showWindow()
+    }
+
+    func showRecurringManager() {
+        if recurringWindowController == nil {
+            recurringWindowController = RecurringRemindersWindowController(
+                engine: recurringEngine,
+                onOpenLog: { [weak self] in
+                    self?.showRecurringLog()
+                }
+            )
+        }
+        recurringWindowController?.showWindow(nil)
+    }
+
+    func showRecurringLog() {
+        if recurringLogWindowController == nil {
+            recurringLogWindowController = RecurringLogWindowController()
+        }
+        recurringLogWindowController?.showWindow(nil)
     }
 }

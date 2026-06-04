@@ -9,6 +9,7 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
     private let eventKitManager: EventKitManager
     private let mappingManager: MappingManager
     private let syncEngine: SyncEngine
+    private let recurringEngine: RecurringEngine
 
     var currentStatus: SyncStatus = .idle {
         didSet {
@@ -19,19 +20,27 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
 
     var onOpenSettings: () -> Void
     var onViewSyncLog: () -> Void
+    var onOpenRecurringManager: () -> Void
+    var onOpenRecurringLog: () -> Void
 
     init(
         eventKitManager: EventKitManager,
         mappingManager: MappingManager,
         syncEngine: SyncEngine,
+        recurringEngine: RecurringEngine,
         onOpenSettings: @escaping () -> Void,
-        onViewSyncLog: @escaping () -> Void
+        onViewSyncLog: @escaping () -> Void,
+        onOpenRecurringManager: @escaping () -> Void,
+        onOpenRecurringLog: @escaping () -> Void
     ) {
         self.eventKitManager = eventKitManager
         self.mappingManager = mappingManager
         self.syncEngine = syncEngine
+        self.recurringEngine = recurringEngine
         self.onOpenSettings = onOpenSettings
         self.onViewSyncLog = onViewSyncLog
+        self.onOpenRecurringManager = onOpenRecurringManager
+        self.onOpenRecurringLog = onOpenRecurringLog
         super.init()
         setupStatusItem()
         setupPopover()
@@ -60,11 +69,18 @@ final class StatusBarController: NSObject, NSPopoverDelegate {
             eventKitManager: eventKitManager,
             mappingManager: mappingManager,
             syncEngine: syncEngine,
+            recurringEngine: recurringEngine,
             onSyncNow: { [weak self] in
                 self?.handleSyncNow()
             },
             onViewSyncLog: { [weak self] in
                 self?.onViewSyncLog()
+            },
+            onOpenRecurringManager: { [weak self] in
+                self?.onOpenRecurringManager()
+            },
+            onOpenRecurringLog: { [weak self] in
+                self?.onOpenRecurringLog()
             },
             onOpenSettings: { [weak self] in
                 self?.onOpenSettings()

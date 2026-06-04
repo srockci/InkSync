@@ -77,6 +77,8 @@ struct DeviceMappingRow: View {
     let onAssign: (String) -> Void
     let onUnassign: (String) -> Void
 
+    @State private var showingPicker = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
@@ -124,7 +126,47 @@ struct DeviceMappingRow: View {
                         }
                     }
 
-                    addListMenu
+                    Button {
+                        showingPicker = true
+                    } label: {
+                        HStack(spacing: 2) {
+                            Image(systemName: "plus")
+                            Text("添加")
+                        }
+                        .font(.caption)
+                        .foregroundStyle(Color.accentColor)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                    }
+                    .buttonStyle(.plain)
+                    .popover(isPresented: $showingPicker, arrowEdge: .bottom) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("选择列表")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .padding(.horizontal, 12)
+                                .padding(.top, 8)
+
+                            if availableLists.isEmpty {
+                                Text("暂无可用列表")
+                                    .font(.caption)
+                                    .foregroundStyle(.tertiary)
+                                    .padding(12)
+                            } else {
+                                ForEach(availableLists, id: \.calendarIdentifier) { list in
+                                    Button(list.title) {
+                                        onAssign(list.calendarIdentifier)
+                                        showingPicker = false
+                                    }
+                                    .buttonStyle(.plain)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                }
+                            }
+                        }
+                        .padding(.bottom, 8)
+                        .frame(minWidth: 180)
+                    }
                 }
             }
         }
@@ -132,25 +174,6 @@ struct DeviceMappingRow: View {
         .padding(.horizontal, 12)
         .background(Color(nsColor: .controlBackgroundColor))
         .cornerRadius(8)
-    }
-
-    private var addListMenu: some View {
-        Menu {
-            ForEach(availableLists, id: \.calendarIdentifier) { list in
-                Button(list.title) {
-                    onAssign(list.calendarIdentifier)
-                }
-            }
-        } label: {
-            HStack(spacing: 2) {
-                Image(systemName: "plus")
-                Text("添加")
-            }
-            .font(.caption)
-            .foregroundStyle(Color.accentColor)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-        }
     }
 }
 

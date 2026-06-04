@@ -141,6 +141,43 @@ final class EventKitManager: ObservableObject {
         try eventStore.save(reminder, commit: true)
     }
 
+    @discardableResult
+    func createReminder(
+        title: String,
+        notes: String? = nil,
+        listId: String,
+        dueDate: Date? = nil
+    ) async throws -> TodoItem {
+        try ensureAuthorized()
+        guard let calendar = eventStore.calendar(withIdentifier: listId) else {
+            throw EventKitError.calendarNotFound
+        }
+        let reminder = EKReminder(eventStore: eventStore)
+        reminder.title = title
+        reminder.notes = notes
+        reminder.calendar = calendar
+        if let dueDate {
+            reminder.dueDateComponents = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: dueDate
+            )
+        }
+        try eventStore.save(reminder, commit: true)
+        return TodoItem(
+            id: reminder.calendarItemIdentifier,
+            title: title,
+            notes: notes,
+            isCompleted: false,
+            dueDate: dueDate,
+            dueTime: nil,
+            priority: 0,
+            listId: listId,
+            listName: calendar.title,
+            lastModified: Date(),
+            source: .local
+        )
+    }
+
     func saveTodo(_ todo: TodoItem) async throws {
         try ensureAuthorized()
 
