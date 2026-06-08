@@ -108,10 +108,8 @@ struct RecurringRemindersView: View {
             .help("新增")
 
             Button {
-                if let firstSelected = selection.first,
-                   let rule = engine.rules.first(where: { $0.id == firstSelected }) {
-                    editingRule = rule
-                }
+                engine.deleteRules(Array(selection))
+                selection.removeAll()
             } label: {
                 Image(systemName: "minus.circle.fill")
                     .foregroundStyle(selection.isEmpty ? Color.secondary : Color.red)
