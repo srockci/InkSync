@@ -232,12 +232,13 @@ struct RecurringReminderEditView: View {
     }
 
     private var monthlyDayPicker: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("选择日期（可多选，支持「最后一天」）")
                 .font(.caption)
                 .foregroundStyle(.secondary)
-            HStack {
-                ForEach(1...15, id: \.self) { day in
+
+            Menu {
+                ForEach(1...31, id: \.self) { day in
                     Toggle(isOn: Binding(
                         get: { monthlyDays.contains(day) },
                         set: { isOn in
@@ -245,36 +246,44 @@ struct RecurringReminderEditView: View {
                             else { monthlyDays.remove(day) }
                         }
                     )) {
-                        Text("\(day)")
+                        Text("\(day)日")
                     }
-                    .toggleStyle(.button)
                 }
-            }
-            HStack {
-                ForEach(16...31, id: \.self) { day in
-                    Toggle(isOn: Binding(
-                        get: { monthlyDays.contains(day) },
-                        set: { isOn in
-                            if isOn { monthlyDays.insert(day) }
-                            else { monthlyDays.remove(day) }
-                        }
-                    )) {
-                        Text("\(day)")
+                Divider()
+                Toggle(isOn: Binding(
+                    get: { monthlyDays.contains(99) },
+                    set: { isOn in
+                        if isOn { monthlyDays.insert(99) }
+                        else { monthlyDays.remove(99) }
                     }
-                    .toggleStyle(.button)
+                )) {
+                    Text("最后一天")
                 }
-            }
-            Toggle(isOn: Binding(
-                get: { monthlyDays.contains(99) },
-                set: { isOn in
-                    if isOn { monthlyDays.insert(99) }
-                    else { monthlyDays.remove(99) }
+            } label: {
+                HStack {
+                    Text(monthlyDays.isEmpty ? "选择日期" : monthlyDaysLabel)
+                        .foregroundStyle(monthlyDays.isEmpty ? Color.secondary : Color.primary)
+                    Spacer()
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-            )) {
-                Text("最后一天")
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color(nsColor: .textBackgroundColor))
+                .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.secondary.opacity(0.3)))
             }
-            .toggleStyle(.button)
+            .menuStyle(.borderlessButton)
+            .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    private var monthlyDaysLabel: String {
+        let normalDays = monthlyDays.filter { $0 != 99 }.sorted()
+        let hasLastDay = monthlyDays.contains(99)
+        var parts: [String] = normalDays.map { "\($0)日" }
+        if hasLastDay { parts.append("最后一天") }
+        return parts.joined(separator: "、")
     }
 
     private var customPicker: some View {
