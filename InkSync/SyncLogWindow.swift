@@ -5,6 +5,7 @@ struct SyncLogView: View {
     @State private var showAllRecords = false
     @State private var exportURL: URL?
     @State private var showingExportSuccess = false
+    @State private var refreshTrigger: Int = 0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -17,6 +18,10 @@ struct SyncLogView: View {
         .frame(width: 480, height: 500)
         .onAppear {
             logStore = SyncLogStore()
+            refreshTrigger += 1
+        }
+        .onReceive(Timer.publish(every: 5, on: .main, in: .common).autoconnect()) { _ in
+            refreshTrigger += 1
         }
         .alert("导出成功", isPresented: $showingExportSuccess) {
             Button("打开文件") {
@@ -64,6 +69,7 @@ struct SyncLogView: View {
 
     private var logList: some View {
         let records = showAllRecords ? logStore.fetchAllRecords() : logStore.fetchTodayRecords()
+        let _ = refreshTrigger
 
         return Group {
             if records.isEmpty {

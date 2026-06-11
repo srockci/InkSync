@@ -205,19 +205,6 @@ struct MenuPopoverView: View {
 
             Spacer()
 
-            Button {
-                onOpenRecurringLog()
-            } label: {
-                HStack(spacing: 2) {
-                    Image(systemName: "doc.text")
-                        .font(.caption2)
-                    Text("日志")
-                        .font(.caption)
-                }
-            }
-            .buttonStyle(.plain)
-            .foregroundStyle(Color.accentColor)
-
             if recurringEngine.todayGeneratedCount > 0 {
                 Text("今日: \(recurringEngine.todayGeneratedCount)")
                     .font(.caption)
