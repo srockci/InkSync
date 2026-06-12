@@ -124,17 +124,24 @@ InkSync/
 ├── OnboardingWindow.swift     # 引导
 ├── SyncEngine.swift           # 同步核心
 ├── SyncLogWindow.swift        # 同步日志窗口
-├── EventKitManager.swift      # Reminders
+├── SyncLogStore.swift         # 日志存储
+├── SyncModels.swift           # 同步日志模型
+├── EventKitManager.swift      # Reminders 增删改查
+├── EKReminder+TodoItem.swift  # EKReminder → TodoItem 转换
+├── EventKitError.swift        # EventKit 错误类型
 ├── APIClient.swift            # API 协议
 ├── RealAPIClient.swift        # 真实 API
-├── SyncLogStore.swift         # 日志存储
-├── SecureStorage.swift        # 加密存储
-├── CloudIdStore.swift         # ID 映射
-├── MappingManager.swift       # 映射
+├── SecureStorage.swift        # ChaChaPoly 加密存储
+├── CloudIdStore.swift         # 本地→云端 ID 映射
+├── MappingManager.swift       # 设备-列表映射管理
 ├── MappingConfig.swift        # 映射模型
 ├── MappingConfigView.swift    # 映射设置 UI
-├── StatusBarController.swift  # 状态栏
-├── AppConfig.swift            # 配置
+├── AppConfig.swift            # 用户偏好设置
+├── TodoItem.swift             # TodoItem 模型
+├── Models.swift               # 同步状态等模型
+├── FlowLayout.swift           # macOS 13+ Layout 协议流式布局
+├── SystemSettings.swift       # 系统设置快捷入口
+├── NotificationManager.swift  # 系统通知
 ├── Recurring/                 # 周期备忘录
 │   ├── RecurringReminder.swift
 │   ├── RecurrenceRule.swift
