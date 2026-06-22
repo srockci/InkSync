@@ -57,6 +57,83 @@ final class RecurrenceScheduler {
         }
     }
 
+    func missedTriggers(for rule: RecurringReminder, from start: Date, to end: Date) -> [Date] {
+        let actualStart = max(start, rule.startDate)
+        if actualStart >= end { return [] }
+        if let endDate = rule.endDate, actualStart > endDate { return [] }
+
+        if case .custom(let interval, let unit) = rule.recurrenceRule {
+            switch unit {
+            case .minute, .hour:
+                return []
+            case .day, .week, .month:
+                return missedCustomTriggers(rule: rule, interval: interval, unit: unit, from: actualStart, to: end)
+            }
+        }
+
+        return missedCalendarTriggers(rule: rule, from: actualStart, to: end)
+    }
+
+    private func missedCustomTriggers(
+        rule: RecurringReminder,
+        interval: Int,
+        unit: RecurrenceRule.RecurrenceUnit,
+        from start: Date,
+        to end: Date
+    ) -> [Date] {
+        let component: Calendar.Component
+        switch unit {
+        case .day: component = .day
+        case .week: component = .weekOfYear
+        case .month: component = .month
+        default: return []
+        }
+
+        var missed: [Date] = []
+        let base = rule.lastGeneratedAt ?? rule.startDate
+        guard var candidate = calendar.date(byAdding: component, value: interval, to: base) else {
+            return []
+        }
+
+        var safety = 0
+        while candidate <= end {
+            if safety > 1000 { break }
+            safety += 1
+            if let endDate = rule.endDate, candidate > endDate { break }
+            if candidate >= start {
+                missed.append(candidate)
+            }
+            guard let next = calendar.date(byAdding: component, value: interval, to: candidate) else { break }
+            candidate = next
+        }
+        return missed
+    }
+
+    private func missedCalendarTriggers(
+        rule: RecurringReminder,
+        from start: Date,
+        to end: Date
+    ) -> [Date] {
+        var missed: [Date] = []
+        var candidate = combineDate(start, with: rule.triggerTime)
+        while candidate < start {
+            candidate = advanceOneDay(from: candidate)
+        }
+
+        var safety = 0
+        let maxIterations = 365 * 3
+        while candidate <= end {
+            if safety > maxIterations { break }
+            safety += 1
+            if let endDate = rule.endDate, candidate > endDate { break }
+            if matches(rule: rule, date: candidate) {
+                missed.append(candidate)
+            }
+            candidate = advanceOneDay(from: candidate)
+        }
+        return missed
+    }
+
     private func combineDate(_ date: Date, with time: TriggerTime) -> Date {
         var components = calendar.dateComponents([.year, .month, .day], from: date)
         components.hour = time.hour

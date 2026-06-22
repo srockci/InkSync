@@ -111,4 +111,26 @@ final class NotificationManager: ObservableObject {
         )
         UNUserNotificationCenter.current().add(request)
     }
+
+    func notifyCatchupRecovered(recovered: Int, failed: Int) {
+        guard isAuthorized else { return }
+        guard recovered > 0 || failed > 0 else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "周期备忘已补发"
+        if failed > 0 {
+            content.body = "已补发 \(recovered) 项，失败 \(failed) 项"
+            content.sound = .defaultCritical
+        } else {
+            content.body = "已补发 \(recovered) 项遗漏的周期备忘"
+            content.sound = .default
+        }
+
+        let request = UNNotificationRequest(
+            identifier: "recurring_catchup_\(UUID().uuidString)",
+            content: content,
+            trigger: nil
+        )
+        UNUserNotificationCenter.current().add(request)
+    }
 }

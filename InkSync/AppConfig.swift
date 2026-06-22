@@ -12,6 +12,7 @@ final class AppConfig: ObservableObject {
     private let notifyOnConflictKey = "notifyOnConflict"
     private let hasCompletedOnboardingKey = "hasCompletedOnboarding"
     private let lastSyncTimeKey = "lastSyncTime"
+    private let recurringCatchUpHoursKey = "recurringCatchUpHours"
 
     @Published var apiURL: String {
         didSet {
@@ -64,6 +65,17 @@ final class AppConfig: ObservableObject {
         set { defaults.set(newValue, forKey: lastSyncTimeKey) }
     }
 
+    @Published var recurringCatchUpHours: Int {
+        didSet {
+            let clamped = max(0, min(168, recurringCatchUpHours))
+            if clamped != recurringCatchUpHours {
+                recurringCatchUpHours = clamped
+                return
+            }
+            defaults.set(clamped, forKey: recurringCatchUpHoursKey)
+        }
+    }
+
     private init() {
         self.apiURL = defaults.string(forKey: apiURLKey) ?? "https://cloud.zectrix.com/open/v1"
         self.apiKey = SecureStorage.shared.get("apiKey") ?? ""
@@ -75,6 +87,8 @@ final class AppConfig: ObservableObject {
         self.notifyOnFailure = defaults.object(forKey: notifyOnFailureKey) as? Bool ?? true
         self.notifyOnConflict = defaults.object(forKey: notifyOnConflictKey) as? Bool ?? true
         self.hasCompletedOnboarding = defaults.bool(forKey: hasCompletedOnboardingKey)
+        let stored = defaults.object(forKey: recurringCatchUpHoursKey) as? Int ?? 72
+        self.recurringCatchUpHours = max(0, min(168, stored))
     }
 
     func resetToDefaults() {
@@ -84,6 +98,7 @@ final class AppConfig: ObservableObject {
         notifyOnSuccess = true
         notifyOnFailure = true
         notifyOnConflict = true
+        recurringCatchUpHours = 72
     }
 
     func resetSyncRecords() {

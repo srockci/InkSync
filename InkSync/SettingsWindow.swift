@@ -26,6 +26,7 @@ struct SettingsView: View {
                     deviceMappingSection
                     syncRulesSection
                     notificationPrefsSection
+                    recurringSection
                     actionButtons
                 }
                 .padding(24)
@@ -181,6 +182,53 @@ struct SettingsView: View {
         .padding(16)
         .background(Color(nsColor: .controlBackgroundColor).opacity(0.5))
         .cornerRadius(8)
+    }
+
+    private var recurringSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label("周期备忘", systemImage: "arrow.clockwise.circle")
+                .font(.headline)
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text("补发窗口（小时）")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                HStack {
+                    Stepper(value: $appConfig.recurringCatchUpHours, in: 0...168, step: 12) {
+                        Text("\(appConfig.recurringCatchUpHours) 小时")
+                            .frame(width: 80, alignment: .leading)
+                    }
+                    Text(catchUpHint)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Text("当 Mac 长时间休眠/关机后唤醒时，自动补发窗口内错过的周期备忘。设为 0 关闭补发。")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(16)
+        .background(Color(nsColor: .controlBackgroundColor).opacity(0.5))
+        .cornerRadius(8)
+    }
+
+    private var catchUpHint: String {
+        switch appConfig.recurringCatchUpHours {
+        case 0: return "已关闭"
+        case 1..<24: return "约 \(appConfig.recurringCatchUpHours) 小时"
+        case 24: return "1 天"
+        case 48: return "2 天"
+        case 72: return "3 天（推荐）"
+        case 96: return "4 天"
+        case 120: return "5 天"
+        case 144: return "6 天"
+        case 168: return "7 天（上限）"
+        default:
+            let days = appConfig.recurringCatchUpHours / 24
+            let hours = appConfig.recurringCatchUpHours % 24
+            if hours == 0 { return "\(days) 天" }
+            return "\(days) 天 \(hours) 小时"
+        }
     }
 
     private var actionButtons: some View {

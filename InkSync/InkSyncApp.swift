@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 @main
 struct InkSyncApp: App {
@@ -81,6 +82,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ) { [weak self] _ in
             self?.eventKitManager.refreshAuthorizationStatus()
         }
+
+        NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didWakeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.handleSystemWake()
+        }
+    }
+
+    private func handleSystemWake() {
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            recurringEngine.catchUpOnLaunchOrWake()
+        }
     }
 
     private func updateDockVisibility() {
@@ -140,6 +156,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupSyncEngine() {
         syncEngine.startPolling()
         recurringEngine.start()
+        recurringEngine.catchUpOnLaunchOrWake()
     }
 
     private func requestPermissions() {

@@ -94,9 +94,12 @@ struct RecurringLogView: View {
             Text("失败: \(failedCount)")
                 .font(.caption)
                 .foregroundStyle(.red)
-            Text("待重试: \(retryCount)")
+            Text("补发: \(catchupCount)")
                 .font(.caption)
                 .foregroundStyle(.orange)
+            Text("待重试: \(retryCount)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
         .padding(16)
     }
@@ -128,6 +131,10 @@ struct RecurringLogView: View {
         logs.filter { !$0.success }.count
     }
 
+    private var catchupCount: Int {
+        logs.filter { $0.isCatchup }.count
+    }
+
     private var retryCount: Int { 0 }
 
     private func reload() {
@@ -145,13 +152,14 @@ struct RecurringLogView: View {
     }
 
     private func generateCSV() -> String {
-        var lines = ["时间,规则标题,状态,错误信息"]
+        var lines = ["时间,规则标题,状态,补发,错误信息"]
         for log in logs {
             let time = ISO8601DateFormatter().string(from: log.actualTime)
             let escapedTitle = log.ruleTitle.replacingOccurrences(of: ",", with: ";")
             let status = log.success ? "成功" : "失败"
+            let catchup = log.isCatchup ? "是" : "否"
             let error = (log.errorMessage ?? "").replacingOccurrences(of: ",", with: ";")
-            lines.append("\(time),\(escapedTitle),\(status),\(error)")
+            lines.append("\(time),\(escapedTitle),\(status),\(catchup),\(error)")
         }
         return lines.joined(separator: "\n")
     }
@@ -190,14 +198,25 @@ private struct LogRowView: View {
     }
 
     private var statusBadge: some View {
-        let (text, color) = badgeInfo
-        return Text(text)
-            .font(.caption2)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 3)
-            .background(color.opacity(0.15))
-            .foregroundStyle(color)
-            .clipShape(Capsule())
+        HStack(spacing: 4) {
+            if log.isCatchup {
+                Text("补发")
+                    .font(.caption2)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(Color.orange.opacity(0.15))
+                    .foregroundStyle(Color.orange)
+                    .clipShape(Capsule())
+            }
+            let (text, color) = badgeInfo
+            Text(text)
+                .font(.caption2)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 3)
+                .background(color.opacity(0.15))
+                .foregroundStyle(color)
+                .clipShape(Capsule())
+        }
     }
 
     private var badgeInfo: (String, Color) {
